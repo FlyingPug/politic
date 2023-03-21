@@ -1,12 +1,17 @@
 package com.vaflya.politic.service;
 
-import com.vaflya.politic.dto.QuestionAndAnswers;
+import org.json.JSONObject;
 
 public interface QuizService
 {
     /*
         возвращает все вопросы и ответы
      */
-    QuestionAndAnswers[] getQuestions();
+    JSONObject getQuestions();
+
+    /*
+       получает полит. идеологию на основании ответов
+    */
+    String getIdeology(int[] answers);
 }
 

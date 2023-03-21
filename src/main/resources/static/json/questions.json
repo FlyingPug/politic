@@ -1,0 +1,16 @@
+{
+  "questions": [
+    {
+      "question": "Кряк?",
+      "answers": [{"text" : "Кряк!.","weights" : {"anarchy" :  0.1, "communism" : 0.2}},
+        {"text" : "Кряк!.","weights" : {"anarchy" :  0.1, "communism" : 0.2}},
+        {"text" : "Кряк!.","weights" : {"anarchy" :  0.1, "communism" : 0.2}}]
+    },
+    {
+      "question": "Кряк?",
+      "answers": [{"text" : "Кряк!.","weights" : {"anarchy" :  0.1, "communism" : 0.2}},
+        {"text" : "Кряк!.","weights" : {"anarchy" :  0.1, "communism" : 0.2}},
+        {"text" : "Кряк!.","weights" : {"anarchy" :  0.1, "communism" : 0.2}}]
+    }
+  ]
+}
