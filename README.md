@@ -1,3 +1,4 @@
+# politic
 /quiz/questions
 GET
 {"questions" : [{"question" : "Как есть рамен", "answer" : ["asda","авыа","dfsa"]}, "question" : "Как есть рамен", "answer" : ["asda","авыа","dfsa"]}]}
