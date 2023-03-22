@@ -51,16 +51,21 @@ public class PoliticApplication {
 				new Weight("centrism",0.1));
 		Question q5 = new Question("Как вы относитесь к вопросам личных свобод?", ans5_1,ans5_2,ans5_3);
 
-		/*
-		socialism: 0
-		libertarianism: 0
-		monarchy: 0
-		anarchism: 0
-		communism: 0
-		fascism: 0
-		centrism: 0
+		Answer ans6_1 = new Answer("Я считаю, что границы должны быть открыты для всех, кто желает жить и работать в нашей стране",
+				new Weight("libertarianism", 0.1));
+		Answer ans6_2 = new Answer("Я считаю, что границы должны быть закрыты для большинства иммигрантов, и что страна должна прежде всего защищать своих граждан",
+				new Weight("fascism", 0.1));
+		Answer ans6_3 = new Answer("Я считаю, что границы должны серьезно контролироваться, только для некоторых людей должны быть доступна иммиграция.",
+				new Weight("centrism", 0.1));
+		Question q6 = new Question("Как вы относитесь к вопросам иммиграции?", ans2_1, ans2_2, ans2_3);
 
-		*/
+		Answer ans7_1 = new Answer("Я думаю, что экологические проблемы требуют более жестких мер, но не до степени полной реструктуризации экономики",
+				new Weight("centrism",0.1));
+		Answer ans7_2 = new Answer("Я считаю, что необходимо революционное изменение в нашей экономической системе, чтобы решить экологические проблемы",
+				new Weight("communism",0.1));
+		Answer ans7_3 = new Answer("Я считаю, что рыночная экономика может решить экологические проблемы через развитие новых технологий и повышение эффективности",
+				new Weight("libertarianism",0.1));
+		Question q7 = new Question("Как вы относитесь к вопросам экологии?", ans2_1,ans2_2,ans2_3);
 
 		Weight socialism = new Weight("socialism",0);
 		Weight libertarianism = new Weight("libertarianism",0);
@@ -69,8 +74,8 @@ public class PoliticApplication {
 		Weight communism = new Weight("communism",0);
 		Weight fascism = new Weight("fascism",0);
 		Weight centrism = new Weight("centrism",0);
-		Quiz newQuiz("Политический тест", )
-
+		Quiz newQuiz = new Quiz("politicQuiz", new Weight[]{socialism, libertarianism, monarchy, anarchism, communism, fascism, centrism}, new Question[]{q1, q2, q3, q4, q5, q6, q7});
+		newQuiz.save();
 		SpringApplication.run(PoliticApplication.class, args);
 	}
 

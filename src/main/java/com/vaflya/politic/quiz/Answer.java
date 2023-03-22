@@ -8,4 +8,23 @@ public class Answer {
         this.answer = text;
         this.weights = weights;
     }
+
+    public Answer() {}
+
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public Weight[] getWeights() {
+        return weights;
+    }
+
+    public void setWeights(Weight[] weights) {
+        this.weights = weights;
+    }
 }

@@ -2,6 +2,7 @@ package com.vaflya.politic.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaflya.politic.dto.PoliticAnswer;
+import com.vaflya.politic.dto.QuizDto;
 import com.vaflya.politic.service.QuizService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +33,10 @@ public class QuizController {
         return "politicQuiz.html";
     }
     @GetMapping(value = "questions", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Object getQuestions()
+    public @ResponseBody ResponseEntity<QuizDto> getQuestions()
     {
-        Resource resource = new ClassPathResource("/static/json/questions.json");
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(resource.getInputStream(), Object.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        QuizDto quiz = quizService.getQuestions();
+        return ResponseEntity.ok(quiz);
     }
 
     @PostMapping(value = "answer")
