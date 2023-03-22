@@ -1,13 +1,14 @@
 package com.vaflya.politic.controller;
 
-import com.vaflya.politic.dto.QuestionAndAnswers;
+import com.vaflya.politic.dto.AnswerOnQuestionDto;
+import com.vaflya.politic.dto.PoliticAnswerDto;
+import com.vaflya.politic.dto.QuizDto;
 import com.vaflya.politic.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "quiz")
@@ -24,10 +25,17 @@ public class QuizController {
     public String getQuizPage() {
         return "politicQuiz.html";
     }
-
-    @GetMapping("questions")
-    public @ResponseBody ResponseEntity<QuestionAndAnswers[]> getQuestions()
+    @GetMapping(value = "questions", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody ResponseEntity<QuizDto> getQuestions()
     {
+        QuizDto quiz = quizService.getQuestions();
+        return ResponseEntity.ok(quiz);
+    }
 
+    @PostMapping(value = "answer", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PoliticAnswerDto> getAnswer(@RequestBody AnswerOnQuestionDto answerDto)
+    {
+        String ideology = quizService.getIdeology(answerDto.getAnswers());
+        return ResponseEntity.ok(new PoliticAnswerDto(ideology,"/pictures/" + ideology + ".jpg"));
     }
 }
