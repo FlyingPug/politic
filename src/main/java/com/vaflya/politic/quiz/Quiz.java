@@ -3,14 +3,11 @@ package com.vaflya.politic.quiz;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
 
 public class Quiz {
-    public String name;
-    public Weight[] weights;
-    public Question[] questions;
+    private String name;
+    private Weight[] weights;
+    private Question[] questions;
 
     static final public String saveDir = "src/main/resources/";
 
@@ -32,6 +29,7 @@ public class Quiz {
         }
         catch (Exception ex)
         {
+            System.out.println("fucl");
            throw new RuntimeException(ex);
         }
     }

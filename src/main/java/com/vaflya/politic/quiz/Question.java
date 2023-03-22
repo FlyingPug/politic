@@ -1,8 +1,8 @@
 package com.vaflya.politic.quiz;
 
 public class Question {
-    public String question;
-    public Answer[] answers;
+    private String question;
+    private Answer[] answers;
 
     public Question(String question, Answer... answers) {
         this.question = question;

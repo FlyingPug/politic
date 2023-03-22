@@ -1,6 +1,6 @@
 package com.vaflya.politic.dto;
 
-public class PoliticAnswer {
+public class PoliticAnswerDto {
     String ideologyName;
     String imgName;
 
@@ -20,8 +20,13 @@ public class PoliticAnswer {
         this.imgName = imgName;
     }
 
-    public PoliticAnswer(String ideologyName, String imgName) {
+    public PoliticAnswerDto(String ideologyName, String imgName) {
         this.ideologyName = ideologyName;
         this.imgName = imgName;
+    }
+
+    public PoliticAnswerDto()
+    {
+
     }
 }

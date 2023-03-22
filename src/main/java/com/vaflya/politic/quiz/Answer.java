@@ -1,8 +1,8 @@
 package com.vaflya.politic.quiz;
 
 public class Answer {
-    public String answer;
-    public Weight[] weights;
+    private String answer;
+    private Weight[] weights;
 
     public Answer(String text, Weight... weights) {
         this.answer = text;

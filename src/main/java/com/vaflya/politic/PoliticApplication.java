@@ -1,9 +1,5 @@
 package com.vaflya.politic;
 
-import com.vaflya.politic.quiz.Answer;
-import com.vaflya.politic.quiz.Question;
-import com.vaflya.politic.quiz.Quiz;
-import com.vaflya.politic.quiz.Weight;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -12,7 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class PoliticApplication {
 
 	public static void main(String[] args) {
-		Answer ans1_1 = new Answer("Я поддерживаю государственное регулирование экономики"
+		/*Answer ans1_1 = new Answer("Я поддерживаю государственное регулирование экономики"
 				,new Weight("socialism",0.01),new Weight("socialism",0.1),new Weight("communism",0.2));
 		Answer ans1_2 = new Answer("Я против государственного регулирования экономики",
 				new Weight("libertarianism",0.1),new Weight("anarchism",0.1));
@@ -75,7 +71,7 @@ public class PoliticApplication {
 		Weight fascism = new Weight("fascism",0);
 		Weight centrism = new Weight("centrism",0);
 		Quiz newQuiz = new Quiz("politicQuiz", new Weight[]{socialism, libertarianism, monarchy, anarchism, communism, fascism, centrism}, new Question[]{q1, q2, q3, q4, q5, q6, q7});
-		newQuiz.save();
+		newQuiz.save();*/
 		SpringApplication.run(PoliticApplication.class, args);
 	}
 
