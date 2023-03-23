@@ -1,12 +1,12 @@
 package com.vaflya.politic.service;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.vaflya.politic.dto.QuestionDto;
 import com.vaflya.politic.dto.QuizDto;
 import com.vaflya.politic.quiz.Quiz;
+import com.vaflya.politic.quiz.Weight;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,28 +20,52 @@ public class QuizServiceImplementation implements QuizService {
 
     public QuizDto getQuestions()
     {
-        QuestionDto[] questions = new QuestionDto[politicQuiz.questions.length];
-        for(int i = 0;i < politicQuiz.questions.length;i++)
+        QuestionDto[] questions = new QuestionDto[politicQuiz.getQuestions().length];
+        for(int i = 0;i < politicQuiz.getQuestions().length;i++)
         {
-            String[] answers = new String[politicQuiz.questions[i].answers.length];
-            for(int j = 0;j < politicQuiz.questions[i].answers.length;j++)
+            String[] answers = new String[politicQuiz.getQuestions()[i].getAnswers().length];
+            for(int j = 0;j < politicQuiz.getQuestions()[i].getAnswers().length;j++)
             {
-                answers[j] = politicQuiz.questions[i].answers[j].answer;
+                answers[j] = politicQuiz.getQuestions()[i].getAnswers()[j].getAnswer();
             }
-            questions[i] = new QuestionDto(politicQuiz.questions[i].question, answers);
+            questions[i] = new QuestionDto(politicQuiz.getQuestions()[i].getQuestion(), answers);
         }
-        return new QuizDto(politicQuiz.name, questions);
+        return new QuizDto(politicQuiz.getName(), questions);
     }
 
      public String getIdeology(int[] answers)
-    {
-        try {
-            String content = new String(Files.readAllBytes(Paths.get("static/json/questions.json")));
-        }
-        catch (IOException e) {
-            System.err.println("Файл с вопросами не был найден"); // TODO: добавить логирование
-            throw new RuntimeException(e);
-        }
-        return "shit";
-    }
+     {
+         // бтв, по логике тут хорошо бы заменить ideologyMND и ideologyMMD на что-то общее, но если правильно так...
+         Map<String, Double> ideologyMMD = new HashMap<>(); // меры доверия
+         for(Weight weight : politicQuiz.getWeights())
+         {
+            ideologyMMD.put(weight.getLabel(), weight.getValue());
+         }
+         int questionCount = politicQuiz.getQuestions().length;
+         // TODO: Написать нормальные экспешены
+         if(answers.length != questionCount) throw new RuntimeException("wrong input");
+         for(int i = 0;i < answers.length;i++)
+         {
+             if(answers[i] >= politicQuiz.getQuestions()[i].getAnswers().length) throw new RuntimeException("wrong inexes");
+             for(Weight weight : politicQuiz.getQuestions()[i].getAnswers()[answers[i]].getWeights())
+             {
+                 if(!ideologyMMD.containsKey(weight.getLabel())) throw new RuntimeException("there is no such var as " + weight.getLabel());
+                 double MD = ideologyMMD.get(weight.getLabel());
+                 double mod = MD + weight.getValue() * (1 - MD);
+                 ideologyMMD.put(weight.getLabel(), mod);
+             }
+         }
+
+         Map.Entry<String, Double> maxEntry = null;
+         for (Map.Entry<String, Double> entry : ideologyMMD.entrySet())
+         {
+             if(maxEntry == null || entry.getValue() > maxEntry.getValue())
+             {
+                 maxEntry = entry;
+             }
+         }
+
+         assert maxEntry != null;
+         return maxEntry.getKey();
+     }
 }
