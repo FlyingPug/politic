@@ -32,7 +32,7 @@ public class QuizController {
         return ResponseEntity.ok(quiz);
     }
 
-    @PostMapping(value = "answer", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "answers", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PoliticAnswerDto> getAnswer(@RequestBody AnswerOnQuestionDto answerDto)
     {
         String ideology = quizService.getIdeology(answerDto.getAnswers());

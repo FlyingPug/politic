@@ -10,6 +10,6 @@ public class PublicContentController {
 
     @GetMapping(value = "")
     public String getPublicIndex() {
-        return "capy.jpg";
+        return "pictures/capy.jpg";
     }
 }

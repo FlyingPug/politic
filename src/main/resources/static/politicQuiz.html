@@ -8,16 +8,16 @@
 <body>
 <header id ="page-header" style= "display: block">
 </header>
-<form class="form-test">
+<div class="form-test">
     <h3 class="progress">
         <span class="progress-passed">0</span>/12
     </h3>
     <div class="container" id="questions">
-        <h4 class="question-title">Напиться ли мне завтра?</h4>
+        <h4 class="question-title" id="question">Напиться ли мне послезавтра?</h4>
         <div id="button-container">
-            <button class="button-answer">Ответ 1<span class="button__arrow button__arrow_left"></span></button>
-            <button class="button-answer">Ответ 2<span class="button__arrow button__arrow_left"></span></button>
-            <button class="button-answer">Ответ 3<span class="button__arrow button__arrow_left"></span></button>
+            <button class="button-answer" onclick="answer(0)">Ответ 1<span class="button__arrow button__arrow_left"></span></button>
+            <button class="button-answer"  onclick="answer(1)">Ответ 2<span class="button__arrow button__arrow_left"></span></button>
+            <button class="button-answer"   onclick="answer(2)">Ответ 3<span class="button__arrow button__arrow_left"></span></button>
         </div>
         <center>
         <button class="button-back">Предыдущий<span class="button__arrow button__arrow_left"></span></button>
@@ -26,7 +26,7 @@
     <div class="container" id="answer" style="display:none">
         <h1 id="ideology-output">ваш тип</h1>
     </div>
-</form>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

@@ -10,31 +10,36 @@ const answerElements = document.querySelectorAll(".button-answer");
 
     questionElement.textContent = questionsAndAnswers[currentQuestionIndex].question
 
-    answerElements.forEach((questionsAndAnswers[currentQuestionIndex].answer, index) => {
+    answerElements.forEach((answerElement, index) => {
       answerElement.textContent = questionsAndAnswers[currentQuestionIndex].answer[index];
     });
+  }
+
+  function test()
+  {
+    console.log("work");
   }
 
   function answer(answerNumber)
   {
     if(questionsAndAnswers.length < 1) return;
-    answerElement.push(answerNumber);
+    chosenAnswers.push(answerNumber);
     currentQuestionIndex += 1;
     if(questionsAndAnswers.length <= chosenAnswers.length)
     {
         currentQuestionIndex = 0;
-        fetch('/answers', {
+        fetch('/quiz/answers', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(chosenAnswers)
+          body: JSON.stringify({'answers' : chosenAnswers})
         })
           .then(response => response.json())
           .then(data => {
             document.getElementById("questions").style.display = "none";
             document.getElementById("answer").style.display = "block";
-            document.getElementById("ideology-output").innerHTML = data.message;
+            document.getElementById("ideology-output").innerHTML = data.ideologyName;
 
           });
     }
