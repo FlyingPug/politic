@@ -37,9 +37,11 @@ public class QuizServiceImplementation implements QuizService {
      {
          // бтв, по логике тут хорошо бы заменить ideologyMND и ideologyMMD на что-то общее, но если правильно так...
          Map<String, Double> ideologyMMD = new HashMap<>(); // меры доверия
+         Map<String, Double> ideologyMND = new HashMap<>(); // меры недоверия
          for(Weight weight : politicQuiz.getWeights())
          {
             ideologyMMD.put(weight.getLabel(), weight.getValue());
+            ideologyMND.put(weight.getLabel(), weight.getValue());
          }
          int questionCount = politicQuiz.getQuestions().length;
          // TODO: Написать нормальные экспешены
@@ -50,18 +52,28 @@ public class QuizServiceImplementation implements QuizService {
              for(Weight weight : politicQuiz.getQuestions()[i].getAnswers()[answers[i]].getWeights())
              {
                  if(!ideologyMMD.containsKey(weight.getLabel())) throw new RuntimeException("there is no such var as " + weight.getLabel());
-                 double MD = ideologyMMD.get(weight.getLabel());
-                 double mod = MD + weight.getValue() * (1 - MD);
-                 ideologyMMD.put(weight.getLabel(), mod);
+                 if(weight.getValue() > 0) {
+                     double MD = ideologyMMD.get(weight.getLabel());
+                     double mod = MD + weight.getValue() * (1 - MD);
+                     ideologyMMD.put(weight.getLabel(), mod);
+                 }
+                 else
+                 {
+                     double ND = ideologyMND.get(weight.getLabel());
+                     double mod = ND + weight.getValue() * (1 - ND);
+                     ideologyMND.put(weight.getLabel(), mod);
+                 }
              }
          }
 
          Map.Entry<String, Double> maxEntry = null;
          for (Map.Entry<String, Double> entry : ideologyMMD.entrySet())
          {
-             if(maxEntry == null || entry.getValue() > maxEntry.getValue())
+             double KD =  ideologyMMD.get(entry.getKey()) - ideologyMND.get(entry.getKey());
+             if(maxEntry == null || KD > maxEntry.getValue())
              {
                  maxEntry = entry;
+                 maxEntry.setValue(KD);
              }
          }
 
