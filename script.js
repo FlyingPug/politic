@@ -50,6 +50,14 @@ const answerElements = document.querySelectorAll(".button-answer");
     }
   }
 
+function button_back_click(){
+    chosenAnswers[currentQuestionIndex].pop();
+    currentQuestionIndex -= 1;
+    if(currentQuestionIndex < 1) document.getElementById("button-back-id").style.visibility = "hidden";
+    document.getElementById("curInDiv").innerHTML = currentQuestionIndex;
+    updateQuestionsAndAnswers();
+  }
+
 fetch('/quiz/questions')
   .then(response => response.json())
   .then(data => {
@@ -58,6 +66,3 @@ fetch('/quiz/questions')
     allQuestionIndexDiv.innerHTML = data.questions.length;
     updateQuestionsAndAnswers()
   });
-
-
-
