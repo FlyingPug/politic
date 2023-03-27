@@ -48,7 +48,7 @@ document.getElementById("allInDiv").innerHTML = allQuestionIndex;
             document.getElementById("questions").style.display = "none";
             document.getElementById("answer").style.display = "block";
             document.getElementById("ideology-output").innerHTML = data.ideologyName;
-
+            document.getElementById("capybara_block").style.backgroundImage = 'url(' + data.imgName + ')'
           });
     }
     else
@@ -67,7 +67,7 @@ document.getElementById("allInDiv").innerHTML = allQuestionIndex;
     }*/
 
   function button_back_click(){
-    chosenAnswers[currentQuestionIndex].pop();
+    chosenAnswers.pop();
     currentQuestionIndex -= 1;
     if(currentQuestionIndex < 1) document.getElementById("button-back-id").style.visibility = "hidden";
     document.getElementById("curInDiv").innerHTML = currentQuestionIndex;
