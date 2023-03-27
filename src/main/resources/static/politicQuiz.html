@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html content="text/html;">
 <head>
     <meta charset="UTF-8">
@@ -6,27 +6,31 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header id ="page-header" style= "display: block">
-</header>
-<form class="form-test">
-    <h3 class="progress">
-        <span class="progress-passed">0</span>/12
-    </h3>
-    <div class="container" id="questions">
-        <h4 class="question-title">Напиться ли мне завтра?</h4>
-        <div id="button-container">
-            <button class="button-answer">Ответ 1<span class="button__arrow button__arrow_left"></span></button>
-            <button class="button-answer">Ответ 2<span class="button__arrow button__arrow_left"></span></button>
-            <button class="button-answer">Ответ 3<span class="button__arrow button__arrow_left"></span></button>
+    <header id ="page-header" style= "display: block">
+    </header>
+    <div class="form-test" id="form-test-id">
+        <h3 class="progress" id="questionIndexContainer">
+                <div class="progress-passed"><div id="curInDiv"></div></div>
+                /</span>
+                <div id="allInDiv"></div>
+        </h3>
+        <div class="container" id="questions">
+            <h4 class="question-title">Напиться ли мне завтра?</h4>
+            <div id="button-container">
+                <button class="button-answer" onclick="button_answer_click()">Ответ 1Ответ 1Ответ 1Ответ 1Ответ 1Ответ 1Ответ 1Ответ 1Ответ 1Ответ 1<span class="button__arrow button__arrow_left"></span></button>
+                <button class="button-answer" onclick="button_answer_click()">Ответ 2<span class="button__arrow button__arrow_left"></span></button>
+                <button class="button-answer" onclick="button_answer_click()">Ответ 3<span class="button__arrow button__arrow_left"></span></button>
+            </div>
+            <center>
+            <button class="button-back" id="button-back-id" onclick="button_back_click()">Предыдущий<span class="button__arrow button__arrow_left"></span></button>
+            </center>
         </div>
-        <center>
-        <button class="button-back">Предыдущий<span class="button__arrow button__arrow_left"></span></button>
-        </center>
     </div>
     <div class="container" id="answer" style="display:none">
-        <h1 id="ideology-output">ваш тип</h1>
+        <div class="capybara_block"></div>
+        <h1 id="ideology-output"><div id="allQuestionsIndexDiv"></div>ваш тип</h1>
     </div>
-</form>
-<script src="script.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
