@@ -3,7 +3,7 @@ let questionsAndAnswers = [];
 let chosenAnswers = [];
 let allQuestionIndex = 7; //
 
-const questionElement = document.getElementById("question"); //
+const questionElement = document.getElementById("question-title"); //
 const answerElements = document.querySelectorAll(".button-answer"); //
 
 document.getElementById("curInDiv").innerHTML = currentQuestionIndex;
@@ -79,7 +79,7 @@ fetch('/quiz/questions')
   .then(data => {
     questionsAndAnswers = data.questions;
     updateQuestionsAndAnswers();
-    /*allQuestionIndex = data.questions.length;
+    allQuestionIndex = data.questions.length;
       document.getElementById("curInDiv").innerHTML = currentQuestionIndex;
-      document.getElementById("allInDiv").innerHTML = data.questions.length;*/
+      document.getElementById("allInDiv").innerHTML = data.questions.length;
   })
