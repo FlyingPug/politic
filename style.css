@@ -146,9 +146,6 @@ body
     padding: 10px;
     width:400px;
     margin: 0 auto;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
 }
 
 .button-answer
@@ -164,13 +161,13 @@ body
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     color: #FFFFFF;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 1;
     width: 100%;
-    min-height:40px;
+    height:40px;
     padding: 0 22px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -223,30 +220,8 @@ body
     cursor: pointer;
     font-family: 'BS', Roboto, Arial, sans-serif;
     background: #392c30;
-    visibility: hidden;
-}
-
-#answer {
-    top: 10%;
 }
 
 button:hover {
   background-color: #74646a;
-}
-
-.capybara_block {
-    margin: 7% auto;
-    height: 50vh;
-    width: 67%;
-    background-position: center;
-    background-size: contain;
-    background-image: url("pictures/capy.jpg");
-    background-repeat: no-repeat;
-}
-
-.container h1 {
-    text-align: center;
-    font-size: 7vh;
-    font-family: 'BS', Roboto, Arial, sans-serif;
-    font-style: normal;
 }
