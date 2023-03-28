@@ -4,7 +4,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'com.vaflya'
+group = 'com.vaflya.politic'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 compileJava.options.encoding = 'UTF-8'
@@ -23,4 +23,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+tasks.withType(Jar) {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+	manifest {
+		attributes["Main-Class"] = "com.vaflya.politic.PoliticApplication"
+	}
 }
