@@ -59,7 +59,7 @@ public class QuizServiceImplementation implements QuizService {
                  }
                  else
                  {
-                     double ND = ideologyMND.get(weight.getLabel());
+                     double ND = -ideologyMND.get(weight.getLabel());
                      double mod = ND + weight.getValue() * (1 - ND);
                      ideologyMND.put(weight.getLabel(), mod);
                  }
